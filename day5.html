@@ -43,17 +43,25 @@
       background-size: cover;
       background-position: center;
       flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     }
     .panel1 { background-image:url(https://source.unsplash.com/JlLFykfuXcQ/1500x1500); }
     .panel2 { background-image:url(https://source.unsplash.com/Y2KJ3NNnkcQ/1500x1500); }
     .panel3 { background-image:url(https://source.unsplash.com/koSALZtL23A/1500x1500); }
     .panel4 { background-image:url(https://source.unsplash.com/L2wq7Y3h7ag/1500x1500); }
     .panel5 { background-image:url(https://source.unsplash.com/RrgbpvpZJlY/1500x1500); }
-    /* Flex Children */
+    /* Flex Item */
     .panel > * {
       margin: 0;
       width: 100%;
       transition: transform 0.5s;
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .panel p {
       text-transform: uppercase;
