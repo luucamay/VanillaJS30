@@ -1,1 +1,107 @@
-Welcome to my site for the challenge of Javascript
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Musica Andina!</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
+  </head>  
+  <body>
+    <div class="keys">
+    <div data-key="65" class="key">
+      <kbd>Si</kbd>
+      <span class="sound">a</span>
+    </div>
+    <div data-key="90" class="key">
+      <kbd>La</kbd>
+      <span class="sound">z</span>
+    </div>
+    <div data-key="83" class="key">
+      <kbd>Sol</kbd>
+      <span class="sound">s</span>
+    </div>
+    <div data-key="88" class="key">
+      <kbd>Fa#</kbd>
+      <span class="sound">x</span>
+    </div>
+    <div data-key="68" class="key">
+      <kbd>Mi</kbd>
+      <span class="sound">d</span>
+    </div>
+    <div data-key="67" class="key">
+      <kbd>Re</kbd>
+      <span class="sound">c</span>
+    </div>
+    <div data-key="70" class="key">
+      <kbd>Do</kbd>
+      <span class="sound">f</span>
+    </div>
+    <div data-key="86" class="key">
+      <kbd>Si</kbd>
+      <span class="sound">v</span>
+    </div>
+    <div data-key="71" class="key">
+      <kbd>La</kbd>
+      <span class="sound">g</span>
+    </div>
+    <div data-key="66" class="key">
+      <kbd>Sol</kbd>
+      <span class="sound">b</span>
+    </div>
+    <div data-key="72" class="key">
+      <kbd>Fa#</kbd>
+      <span class="sound">h</span>
+    </div>
+    <div data-key="78" class="key">
+      <kbd>Mi</kbd>
+      <span class="sound">n</span>
+    </div>
+    <div data-key="74" class="key">
+      <kbd>Re</kbd>
+      <span class="sound">j</span>
+    </div>
+  </div>
+
+  <audio data-key="65" src="https://cdn.glitch.com/5448ab20-edfe-4946-af71-6eccba6e556d%2Fsi.wav?1543600321311"></audio>
+  <audio data-key="90" src="https://cdn.glitch.com/5448ab20-edfe-4946-af71-6eccba6e556d%2Fla.wav?1543600321190"></audio>
+  <audio data-key="83" src="https://cdn.glitch.com/5448ab20-edfe-4946-af71-6eccba6e556d%2Fsol.wav?1543600321391"></audio>
+  <audio data-key="88" src="https://cdn.glitch.com/5448ab20-edfe-4946-af71-6eccba6e556d%2Ffa.wav?1543600321469"></audio>
+  <audio data-key="68" src="https://cdn.glitch.com/5448ab20-edfe-4946-af71-6eccba6e556d%2Fmi.wav?1543600321163"></audio>
+  <audio data-key="67" src="https://cdn.glitch.com/5448ab20-edfe-4946-af71-6eccba6e556d%2Fre.wav?1543600321415"></audio>
+  <audio data-key="70" src="https://cdn.glitch.com/5448ab20-edfe-4946-af71-6eccba6e556d%2Fdo.wav?1543600321216"></audio>
+  <audio data-key="86" src="https://cdn.glitch.com/5448ab20-edfe-4946-af71-6eccba6e556d%2Fsi2.wav?1543600321336"></audio>
+  <audio data-key="71" src="https://cdn.glitch.com/5448ab20-edfe-4946-af71-6eccba6e556d%2Fla2.wav?1543600321287"></audio>
+  <audio data-key="66" src="https://cdn.glitch.com/5448ab20-edfe-4946-af71-6eccba6e556d%2Fsol2.wav?1543600321441"></audio>
+  <audio data-key="72" src="https://cdn.glitch.com/5448ab20-edfe-4946-af71-6eccba6e556d%2Ffa2.wav?1543600321268"></audio>
+  <audio data-key="78" src="https://cdn.glitch.com/5448ab20-edfe-4946-af71-6eccba6e556d%2Fmi2.wav?1543600321242"></audio>
+  <audio data-key="74" src="https://cdn.glitch.com/5448ab20-edfe-4946-af71-6eccba6e556d%2Fre2.wav?1543600321363"></audio>
+    
+<script>
+	function removeTransition(e){
+		if(e.propertyName != 'transform') return;
+		this.classList.remove('playing');
+	}
+	function playSound(e){
+		const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+		const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+		
+		if(!audio) return;
+		// Start again to play
+		audio.currentTime = 0;
+		audio.play();
+		key.classList.add('playing');
+	}
+	window.addEventListener('keydown', playSound);
+	const keys = document.querySelectorAll('.key');
+	keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+	
+</script>
+
+  </body>
+</html>
